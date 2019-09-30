@@ -53,22 +53,6 @@ permissions and limitations under the License.
                                         <div class="input-group bottom-marg-10">
                                             <span class="input-group-addon">Region</span>
                                             <select name="region" class="form-control" ng-model="settings.region">
-                                                <option value="ap-south-1">Asia Pacific (Mumbai)</option>
-                                                <option value="ap-northeast-3">Asia Pacific (Osaka-Local)</option>
-                                                <option value="ap-northeast-2">Asia Pacific (Seoul)</option>
-                                                <option value="ap-southeast-1">Asia Pacific (Singapore)</option>
-                                                <option value="ap-southeast-2">Asia Pacific (Sydney)</option>
-                                                <option value="ap-northeast-1">Asia Pacific (Tokyo)</option>
-                                                <option value="ca-central-1">Canada (Central)</option>
-                                                <option value="eu-central-1">EU (Frankfurt)</option>
-                                                <option value="eu-west-1">EU (Ireland)</option>
-                                                <option value="eu-west-2">EU (London)</option>
-                                                <option value="eu-west-3">EU (Paris)</option>
-                                                <option value="eu-north-1">EU (Stockholm)</option>
-                                                <option value="sa-east-1">South America (São Paulo)</option>
-                                                <option value="">US East (N. Virginia)</option>
-                                                <option value="us-east-2">US East (Ohio)</option>
-                                                <option value="us-west-1">US West (N. California)</option>
                                                 <option value="us-west-2">US West (Oregon)</option>
                                             </select>
                                         </div>
@@ -82,15 +66,13 @@ permissions and limitations under the License.
                                         </div>
                                         <div class="input-group bottom-marg-10" ng-hide="settings.buckets.length && settings.selected_bucket!=''">
                                             <span class="input-group-addon">Bucket</span>
-                                            <input name="bucket" ng-model="settings.entered_bucket" type="text" class="form-control" placeholder="bucket" ng-required="!buckets.length"/>
+                                            <input name="bucket" ng-model="settings.entered_bucket" type="text" class="form-control" value="mm-datalake-us-west-2-prod" ng-required="!buckets.length"/>
                                         </div>
                                         <p><b>Authentication</b>: Please provide any credentials needed to access the bucket.</p>
                                         <div class="input-group bottom-marg-10">
                                             <span class="input-group-addon">Authentication</span>
                                             <select name="county" class="form-control" ng-model="settings.auth" required>
-                                                <option value="anon">Public Bucket (no authentication needed)</option>
                                                 <option value="auth">Private Bucket (I have AWS credentials)</option>
-                                                <option value="temp">Private Bucket (I have temporary AWS credentials)</option>
                                             </select>
                                         </div>
                                         <p ng-hide="settings.auth=='anon'"><b>Credentials</b>: this web page uses the <a href="http://aws.amazon.com/sdk-for-browser/" target="_blank">AWS SDK for JavaScript in the Browser</a>. Your AWS credentials are kept in memory and used by the SDK for authentication. Your secret access key is used to sign API requests but it is <b>not</b> sent to the S3 service.</p>
@@ -106,13 +88,6 @@ permissions and limitations under the License.
                                             <span class="input-group-addon">Session Token</span>
                                             <input name="token" type="text" ng-model="settings.cred.sessionToken" class="form-control" ng-disabled="settings.auth!='temp'" placeholder="session token" required/>
                                         </div>
-                                        <div class="input-group bottom-marg-10" ng-show="settings.auth=='auth'">
-                                            <span class="input-group-addon">Multi-Factor</span>
-                                            <select name="county" class="form-control" ng-model="settings.mfa.use" required>
-                                                <option value="no">No (I do not need to provide an MFA code)</option>
-                                                <option value="yes">Yes (I need to provide an MFA code)</option>
-                                            </select>
-                                        </div>
                                         <div class="input-group bottom-marg-10" ng-show="settings.mfa.use=='yes'">
                                             <span class="input-group-addon">MFA Code</span>
                                             <input name="token" type="text" ng-model="settings.mfa.code" class="form-control" ng-disabled="settings.mfa.use=='no'" placeholder="MFA code" required/>
@@ -123,12 +98,7 @@ permissions and limitations under the License.
                                             <span class="input-group-addon">Initial View</span>
                                             <select name="view" class="form-control" ng-model="settings.delimiter" required>
                                                 <option value="/">Folder (shows folder-by-folder)</option>
-                                                <option value="">Bucket (shows entire bucket contents)</option>
                                             </select>
-                                        </div>
-                                        <div class="input-group bottom-marg-10">
-                                            <span class="input-group-addon">Initial Prefix</span>
-                                            <input name="prefix" type="text" ng-model="settings.prefix" class="form-control" placeholder="prefix e.g. songs/"/>
                                         </div>
                                     </div>
                                 </div>
