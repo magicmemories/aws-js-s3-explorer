@@ -66,10 +66,10 @@ permissions and limitations under the License.
                                                 <option value="eu-west-3">EU (Paris)</option>
                                                 <option value="eu-north-1">EU (Stockholm)</option>
                                                 <option value="sa-east-1">South America (São Paulo)</option>
-                                                <option value="">US East (N. Virginia)</option>
+                                                <option value="us-east-1">US East (N. Virginia)</option>
                                                 <option value="us-east-2">US East (Ohio)</option>
                                                 <option value="us-west-1">US West (N. California)</option>
-                                                <option value="us-west-2">US West (Oregon)</option>
+                                                <option value="">US West (Oregon)</option>
                                             </select>
                                         </div>
                                         <div class="input-group bottom-marg-10" ng-show="settings.buckets.length">
@@ -82,7 +82,9 @@ permissions and limitations under the License.
                                         </div>
                                         <div class="input-group bottom-marg-10" ng-hide="settings.buckets.length && settings.selected_bucket!=''">
                                             <span class="input-group-addon">Bucket</span>
-                                            <input name="bucket" ng-model="settings.entered_bucket" type="text" class="form-control" placeholder="bucket" ng-required="!buckets.length"/>
+                                            <select name="region" class="form-control" ng-model="settings.entered_bucket" ng-required="!buckets.length">
+                                                <option value="">mm-datalake-us-west-2-prod</option>
+                                            </select>
                                         </div>
                                         <p><b>Authentication</b>: Please provide any credentials needed to access the bucket.</p>
                                         <div class="input-group bottom-marg-10">
